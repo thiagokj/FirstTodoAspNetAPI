@@ -23,7 +23,7 @@ namespace Todo.Controllers
     [ApiController]
     public class HomeController : ControllerBase
     {
-        // Os métodos do controller são chamados de Actions
+        // Os métodos do controller são chamados de Actions.
         [HttpGet]
         [Route("/")]
         public string Get()
@@ -67,10 +67,11 @@ Dessa forma, podemos criar um método para retornar uma lista de tarefas.
 
 ```Csharp
     ...
+    // HomeController é uma convenção de nome para um controlador inicial.
     public class HomeController : ControllerBase
     {
         [HttpGet("/")]
-        // Utiliza o DbContext dos serviços do AspNet via injeção de dependência
+        // Utiliza o DbContext dos serviços do AspNet via injeção de dependência.
         public List<TodoModel> Get([FromServices] AppDbContext context)
         {
             return context.Todos.ToList();
@@ -88,7 +89,7 @@ Passando o CRUD para verbos Http, temos: Post (Criação), Get (Leitura), Put (A
     [ApiController]
     public class HomeController : ControllerBase
     {
-        // Os métodos do controller são chamados de Action.
+        // Os métodos do controller são chamados de Actions.
         // Faz a requisição via URL.
         [HttpGet("/")]
         public List<TodoModel> Get([FromServices] AppDbContext context)
@@ -110,7 +111,7 @@ Passando o CRUD para verbos Http, temos: Post (Criação), Get (Leitura), Put (A
             return context.Todos.FirstOrDefault(x => x.Id == id);
         }
 
-        // Faz a requisição via Body
+        // Faz a requisição via Body.
         [HttpPost("/")]
         public TodoModel Post(
             [FromBody] TodoModel todo,
